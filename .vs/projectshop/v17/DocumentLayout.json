@@ -1,0 +1,517 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\acer\\Documents\\projectshop\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|c:\\users\\acer\\documents\\projectshop\\projectshop\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\summary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\summary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\summary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\summary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\ucmemberacc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\ucmemberacc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\ucstock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\ucstock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\manageorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\manageorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\menuadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\menuadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\menuadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\menuadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\userprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\userprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\historycustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\historycustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\cart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\cart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\infoproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\infoproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\ucproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\ucproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\menumember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\menumember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\menumember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\menumember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\registermember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\registermember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\loginmember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\loginmember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\loginmember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\loginmember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\cart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\cart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\infoproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\infoproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\registermember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\registermember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\manageorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\manageorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\ucproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\ucproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\historycustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\historycustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\ucstock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\ucstock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\ucmemberacc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\ucmemberacc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|C:\\Users\\acer\\Documents\\projectshop\\projectshop\\userprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{759B5282-62BA-48E0-8255-E62A48F39A4F}|projectshop\\projectshop.csproj|solutionrelative:projectshop\\userprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 100,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 205,
+          "SelectedChildIndex": 14,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "main.cs",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\main.cs",
+              "RelativeDocumentMoniker": "projectshop\\main.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\main.cs",
+              "RelativeToolTip": "projectshop\\main.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAACcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:55:08.047Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "main.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\main.cs",
+              "RelativeDocumentMoniker": "projectshop\\main.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\main.cs [Design]",
+              "RelativeToolTip": "projectshop\\main.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:47:31.908Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "loginmember.cs",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\loginmember.cs",
+              "RelativeDocumentMoniker": "projectshop\\loginmember.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\loginmember.cs",
+              "RelativeToolTip": "projectshop\\loginmember.cs",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAmwG8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:55:10.906Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "loginmember.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\loginmember.cs",
+              "RelativeDocumentMoniker": "projectshop\\loginmember.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\loginmember.cs [Design]",
+              "RelativeToolTip": "projectshop\\loginmember.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:47:26.471Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "registermember.cs",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\registermember.cs",
+              "RelativeDocumentMoniker": "projectshop\\registermember.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\registermember.cs",
+              "RelativeToolTip": "projectshop\\registermember.cs",
+              "ViewState": "AQIAACUBAAAAAAAAAAAAAAYBAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:55:17.722Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "registermember.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\registermember.cs",
+              "RelativeDocumentMoniker": "projectshop\\registermember.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\registermember.cs [Design]",
+              "RelativeToolTip": "projectshop\\registermember.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:48:01.207Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Menumember.cs",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\Menumember.cs",
+              "RelativeDocumentMoniker": "projectshop\\Menumember.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\Menumember.cs",
+              "RelativeToolTip": "projectshop\\Menumember.cs",
+              "ViewState": "AQIAADgAAAAAAAAAAAAuwEgAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:55:24.101Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Menumember.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\Menumember.cs",
+              "RelativeDocumentMoniker": "projectshop\\Menumember.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\Menumember.cs [Design]",
+              "RelativeToolTip": "projectshop\\Menumember.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:47:33.978Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "UCproduct.cs",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\UCproduct.cs",
+              "RelativeDocumentMoniker": "projectshop\\UCproduct.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\UCproduct.cs",
+              "RelativeToolTip": "projectshop\\UCproduct.cs",
+              "ViewState": "AQIAANoAAAAAAAAAAAAuwM8AAABIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:55:30.24Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "UCproduct.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\UCproduct.cs",
+              "RelativeDocumentMoniker": "projectshop\\UCproduct.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\UCproduct.cs [Design]",
+              "RelativeToolTip": "projectshop\\UCproduct.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:48:19.709Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "infoproduct.cs",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\infoproduct.cs",
+              "RelativeDocumentMoniker": "projectshop\\infoproduct.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\infoproduct.cs",
+              "RelativeToolTip": "projectshop\\infoproduct.cs",
+              "ViewState": "AQIAANEAAAAAAAAAAAAswLAAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:55:34.489Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "infoproduct.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\infoproduct.cs",
+              "RelativeDocumentMoniker": "projectshop\\infoproduct.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\infoproduct.cs [Design]",
+              "RelativeToolTip": "projectshop\\infoproduct.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:48:11.866Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "cart.cs",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\cart.cs",
+              "RelativeDocumentMoniker": "projectshop\\cart.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\cart.cs",
+              "RelativeToolTip": "projectshop\\cart.cs",
+              "ViewState": "AQIAALgBAAAAAAAAAAAQwLMBAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:55:38.672Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "cart.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\cart.cs",
+              "RelativeDocumentMoniker": "projectshop\\cart.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\cart.cs [Design]",
+              "RelativeToolTip": "projectshop\\cart.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:48:08.552Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "payment.cs",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\payment.cs",
+              "RelativeDocumentMoniker": "projectshop\\payment.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\payment.cs",
+              "RelativeToolTip": "projectshop\\payment.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAKwBAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:55:42.652Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "payment.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\payment.cs",
+              "RelativeDocumentMoniker": "projectshop\\payment.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\payment.cs [Design]",
+              "RelativeToolTip": "projectshop\\payment.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:48:16.36Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Historycustomer.cs",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\Historycustomer.cs",
+              "RelativeDocumentMoniker": "projectshop\\Historycustomer.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\Historycustomer.cs",
+              "RelativeToolTip": "projectshop\\Historycustomer.cs",
+              "ViewState": "AQIAAFMAAAAAAAAAAAAcwE8AAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:55:47.483Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Historycustomer.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\Historycustomer.cs",
+              "RelativeDocumentMoniker": "projectshop\\Historycustomer.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\Historycustomer.cs [Design]",
+              "RelativeToolTip": "projectshop\\Historycustomer.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:48:09.892Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "userprofile.cs",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\userprofile.cs",
+              "RelativeDocumentMoniker": "projectshop\\userprofile.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\userprofile.cs",
+              "RelativeToolTip": "projectshop\\userprofile.cs",
+              "ViewState": "AQIAANUAAAAAAAAAAAAqwJ8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:55:56.544Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "userprofile.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\userprofile.cs",
+              "RelativeDocumentMoniker": "projectshop\\userprofile.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\userprofile.cs [Design]",
+              "RelativeToolTip": "projectshop\\userprofile.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:48:21.45Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "login.cs",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\login.cs",
+              "RelativeDocumentMoniker": "projectshop\\login.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\login.cs",
+              "RelativeToolTip": "projectshop\\login.cs",
+              "ViewState": "AQIAAFcAAAAAAAAAAAAmwFgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:56:08.942Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "login.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\login.cs",
+              "RelativeDocumentMoniker": "projectshop\\login.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\login.cs [Design]",
+              "RelativeToolTip": "projectshop\\login.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:47:24.338Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MenuAdmin.cs",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\MenuAdmin.cs",
+              "RelativeDocumentMoniker": "projectshop\\MenuAdmin.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\MenuAdmin.cs",
+              "RelativeToolTip": "projectshop\\MenuAdmin.cs",
+              "ViewState": "AQIAADMAAAAAAAAAAAAmwB4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:56:19.231Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MenuAdmin.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\MenuAdmin.cs",
+              "RelativeDocumentMoniker": "projectshop\\MenuAdmin.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\MenuAdmin.cs [Design]",
+              "RelativeToolTip": "projectshop\\MenuAdmin.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:47:33.077Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "manageorder.cs",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\manageorder.cs",
+              "RelativeDocumentMoniker": "projectshop\\manageorder.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\manageorder.cs",
+              "RelativeToolTip": "projectshop\\manageorder.cs",
+              "ViewState": "AQIAANcAAAAAAAAAAAAAANgAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:56:28.221Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "manageorder.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\manageorder.cs",
+              "RelativeDocumentMoniker": "projectshop\\manageorder.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\manageorder.cs [Design]",
+              "RelativeToolTip": "projectshop\\manageorder.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:48:13.774Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UCStock.cs",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\UCStock.cs",
+              "RelativeDocumentMoniker": "projectshop\\UCStock.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\UCStock.cs",
+              "RelativeToolTip": "projectshop\\UCStock.cs",
+              "ViewState": "AQIAAC8CAAAAAAAAAADwv+oBAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:56:44.308Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "UCStock.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\UCStock.cs",
+              "RelativeDocumentMoniker": "projectshop\\UCStock.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\UCStock.cs [Design]",
+              "RelativeToolTip": "projectshop\\UCStock.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:48:20.65Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UCMemberAcc.cs",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\UCMemberAcc.cs",
+              "RelativeDocumentMoniker": "projectshop\\UCMemberAcc.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\UCMemberAcc.cs",
+              "RelativeToolTip": "projectshop\\UCMemberAcc.cs",
+              "ViewState": "AQIAAIQBAAAAAAAAAAAIwDsBAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:57:03.541Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "UCMemberAcc.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\UCMemberAcc.cs",
+              "RelativeDocumentMoniker": "projectshop\\UCMemberAcc.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\UCMemberAcc.cs [Design]",
+              "RelativeToolTip": "projectshop\\UCMemberAcc.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:48:19.032Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "summary.cs",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\summary.cs",
+              "RelativeDocumentMoniker": "projectshop\\summary.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\summary.cs",
+              "RelativeToolTip": "projectshop\\summary.cs",
+              "ViewState": "AQIAALoBAAAAAAAAAAAAwIIBAABRAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:57:13.21Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "summary.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\summary.cs",
+              "RelativeDocumentMoniker": "projectshop\\summary.cs",
+              "ToolTip": "C:\\Users\\acer\\Documents\\projectshop\\projectshop\\summary.cs [Design]",
+              "RelativeToolTip": "projectshop\\summary.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T13:48:17.474Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

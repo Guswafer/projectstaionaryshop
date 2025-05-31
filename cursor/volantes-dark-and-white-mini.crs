@@ -1,0 +1,51 @@
+﻿[Arrow]
+Path=Volantes Dark Mini Normal Select.cur
+
+[Help]
+Path=Volantes Dark Mini Help Select.cur
+
+[AppStarting]
+Path=Volantes Dark Mini Working in Background.ani
+
+[Wait]
+Path=Volantes Dark Mini Busy.ani
+
+[Crosshair]
+Path=Volantes Dark Mini Precision Select.cur
+
+[IBeam]
+Path=Volantes Dark Mini Text Select.cur
+
+[NWPen]
+Path=Volantes Dark Mini Handwriting.cur
+
+[No]
+Path=Volantes Dark Mini Unavailable.cur
+
+[SizeNS]
+Path=Volantes Dark Mini Vertical Resize.cur
+
+[SizeWE]
+Path=Volantes Dark Mini Horizontal Resize.cur
+
+[SizeNWSE]
+Path=Volantes Dark Mini Diagonal Resize 1.cur
+
+[SizeNESW]
+Path=Volantes Dark Mini Diagonal Resize 2.cur
+
+[SizeAll]
+Path=Volantes Dark Mini Move.cur
+
+[UpArrow]
+Path=Volantes Dark Mini Alternate Select.cur
+
+[Hand]
+Path=Volantes Dark Mini Link Select.cur
+
+[Pin]
+Path=Volantes Dark Mini Location Select.cur
+
+[Person]
+Path=Volantes Dark Mini Person Select.cur
+

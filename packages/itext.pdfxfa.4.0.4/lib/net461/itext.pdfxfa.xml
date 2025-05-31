@@ -1,0 +1,2077 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>itext.pdfxfa</name>
+  </assembly>
+  <members>
+    <member name="M:itextsharp.xfaworker.iTextSharp.tool.xml.xtra.xfa.tags.XFATagProcessor.Load(System.String)">
+            Tries to load given processor with Class.forName
+            @param className fully qualified className
+            @return the loaded tag processor
+            @throws NoTagProcessorException if ITagProcessor could not be loaded.
+        </member>
+    <member name="M:iTextSharp.tool.xml.html.RichTextTags.GetRichTextTagProcessorFactory">
+            Returns a new {@link DefaultTagProcessorFactory}
+            @return a default XHTML {@link TagProcessorFactory}
+        </member>
+    <member name="T:iTextSharp.tool.xml.xtra.xfa.XFAConstants">
+            XFA constants.
+        </member>
+    <member name="T:iTextSharp.tool.xml.xtra.xfa.XFAFlattener">
+            Flattens XFA forms
+            <para />
+            Input for flattening can be either PDF document containing XFA forms or XDP stream (a pure XML stream containing XFA description).
+            <para />
+            To flattenXDP the form(from either PDF or XDP) :
+            <list type="bullet"><item>Create <c>XFAFlattener</c> instance</item><item>Invoke <c>flattenXDP</c> method</item></list>
+            No need to close/dispose flattener afterwards.
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.XFAFlattener.FlattenXDP(System.IO.Stream,System.IO.Stream)">
+            Flattens XFA form from XDP stream.
+            For a single instance of <see cref="T:iTextSharp.tool.xml.xtra.xfa.XFAFlattener" /> this method could be called only once.
+            Attempt to reuse method will result in throwing a <see cref="T:iTextSharp.tool.xml.xtra.xfa.XFAFlattenerUnexpectedUsageException" />.
+            Declare another <see cref="T:iTextSharp.tool.xml.xtra.xfa.XFAFlattener" /> instance to process another XDP.
+            <para /><b>Example:</b><br /><code>
+            XFAFlattener flattener = new XFAFlattener();<br />
+            FileStream fin = new FileStream("c:/xdp_source.xml", FileMode.Open);<br />
+            flattener.FlattenXDP(fin, new FileStream("my_flat_doc.pdf", FileMode.Create));<br />
+            fin.Close();
+            </code><param name="xdpStream">an XDP stream</param><param name="pdfOutputStream">PDF output stream</param></member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.XFAFlattener.Flatten(System.IO.Stream,System.IO.Stream)">
+            Flattens XFA form from PDF
+            For a single instance of <see cref="T:iTextSharp.tool.xml.xtra.xfa.XFAFlattener" /> this method could be called only once.
+            Attempt to reuse method will result in throwing a <see cref="T:iTextSharp.tool.xml.xtra.xfa.XFAFlattenerUnexpectedUsageException" />.
+            Declare another <see cref="T:iTextSharp.tool.xml.xtra.xfa.XFAFlattener" /> instance to process another PDF.
+            <param name="xfaInputStream">the input stream with the PDF containing XFA template</param><param name="pdfOutputStream">the output stream where the flattened PDF will be written to</param></member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.XFAFlattener.FlattenXDP(System.Xml.XmlDocument,System.IO.FileStream)">
+            Flattens XFA form from XML data.
+            For a single instance of <see cref="T:iTextSharp.tool.xml.xtra.xfa.XFAFlattener" /> this method could be called only once.
+            Attempt to reuse method will result in throwing a <see cref="T:iTextSharp.tool.xml.xtra.xfa.XFAFlattenerUnexpectedUsageException" />.
+            Declare another <see cref="T:iTextSharp.tool.xml.xtra.xfa.XFAFlattener" /> instance to process another XML.
+            <para /><b>Example:</b><br /><code>
+            XFAFlattener flattener = new XFAFlattener();<br />
+            XmlDocument xdpDoc = new XmlDocument();<br />
+            xdpDoc.Load("c:/xdp_source.xml");<br />
+            flattener.flattenXDP(xdpDoc, new FileOutputStream("my_flat_doc.pdf"));<br /></code><param name="xdpData">an XML data</param><param name="pdfOutputStream">PDF output stream</param></member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.XFAFlattener.SetCssAppliers(iTextSharp.tool.xml.html.CssAppliers)">
+            For internal use only.
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.XFAFlattener.GetCssAppliers">
+            For internal use only.
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.XFAFlattener.Flatten(iTextSharp.tool.xml.xtra.xfa.pipe.DataPipeline)">
+            
+             @param dataPipeline
+             @param closeFlattenDocument
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.XFAFlattener.GetStreamContents(iTextSharp.text.pdf.PdfReader,iTextSharp.text.pdf.PdfObject)">
+            @param reader
+            @param pdfObject2
+            @return
+            @throws IOException
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.XFAFlattener.GetStreamFromIndirectReference(iTextSharp.text.pdf.PdfReader,iTextSharp.text.pdf.PdfIndirectReference)">
+            @param reader
+            @param ir
+            @return
+            @throws IOException
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.XFAFlattenerProperties.ReaderProperties.SetPassword(System.Byte[])">
+      <summary>Defines the password which will be used if the document is encrypted with standard encryption.</summary>
+      <remarks>
+            Defines the password which will be used if the document is encrypted with standard encryption.
+            This could be either user or owner password.
+            </remarks>
+      <param name="password">the password to use in order to open the document.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.XFAFlattenerProperties.#ctor">
+            Default constructor of the {@link XFAFlattenerProperties} class. Doesn't initialize any field.
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.XFAFlattenerProperties.SetOpenPassword(System.Byte[])">
+      <summary>Defines the password which will be used if the document is encrypted with standard encryption.</summary>
+      <remarks>
+            Defines the password which will be used if the document is encrypted with standard encryption.
+            This could be either user or owner password.
+            </remarks>
+      <param name="password">the password to use in order to open the document.</param>
+      <returns>Current <see cref="T:iTextSharp.tool.xml.xtra.xfa.XFAFlattenerProperties" /> with the password set.</returns>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.XFAFlattenerProperties.IsSkipFormStateChecksumCheck">
+      <summary>Getter for skipFormStateChecksumCheck property.</summary>
+      <returns>value of skipFormStateChecksumCheck.</returns>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.XFAFlattenerProperties.SetSkipFormStateChecksumCheck(System.Boolean)">
+      <summary>Setter for property skipFormStateChecksumCheck.</summary>
+      <param name="skipFormStateChecksumCheck">new value of skipFormStateChecksumCheck.</param>
+    </member>
+    <member name="T:iTextSharp.tool.xml.xtra.xfa.util.PdfCanvasForInvisibleElements">
+            This is the canvas class that it used to draw invisible elements onto.
+            The contents of the canvas is discarded eventually and does not affect the output flattened document anyhow.
+        </member>
+    <member name="T:iTextSharp.tool.xml.xtra.xfa.util.XFAPageAnnotationsCopier">
+      <summary>
+             Most of this logic (except copySupportedAnnotations method) was copied from PdfCopy class to facilitate
+            carrying over PDF annotations in XFA Foreground mode.
+            </summary>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.util.XFAPageAnnotationsCopier.FlattenAnnots(System.Collections.Generic.IList{iTextSharp.text.pdf.PdfIndirectReference})">
+      <summary>
+            This functionality is practically directly copied from iTextSharp.text.pdf.PdfStamperImp#FlattenAnnotations method.
+            </summary>
+      <param name="annotsToCopy">list of supported annotations that should be copied to the flattened file.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.util.XFAPageAnnotationsCopier.CopyDictionary(iTextSharp.text.pdf.PdfDictionary)">
+            Translate a PRDictionary to a PdfDictionary. Also translate all of the
+            objects contained in it.
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.util.XFAPageAnnotationsCopier.CopyStream(iTextSharp.text.pdf.PRStream)">
+            Translate a PRStream to a PdfStream. The data part copies itself.
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.util.XFAPageAnnotationsCopier.CopyArray(iTextSharp.text.pdf.PdfArray)">
+            Translate a PRArray to a PdfArray. Also translate all of the objects contained
+            in it
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.util.XFAPageAnnotationsCopier.CopyObject(iTextSharp.text.pdf.PdfObject)">
+            Translate a PR-object to a Pdf-object
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.util.XFAPageAnnotationsCopier.CopyIndirect(iTextSharp.text.pdf.PRIndirectReference)">
+            Translate a PRIndirectReference to a PdfIndirectReference
+            In addition, translates the object numbers, and copies the
+            referenced object to the output file.
+            NB: PRIndirectReferences (and PRIndirectObjects) really need to know what
+            file they came from, because each file has its own namespace. The translation
+            we do from their namespace to ours is *at best* heuristic, and guaranteed to
+            fail under some circumstances.
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.util.XFARectangle.GetCommonRectangle(System.Collections.Generic.IList{iTextSharp.tool.xml.xtra.xfa.util.XFARectangle})">
+            Calculates the common rectangle which includes all the input rectangles.
+            @param rectangles list of input rectangles.
+            @return common rectangle.
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.util.XFARectangle.ToRectangle">
+             Does new com.itextpdf.text.Rectangle(x, y, x+w, y+h);
+            
+             @return a com.itextpdf.text.Rectangle
+             @throws UnsupportedOperationException if any of the parameters is null
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.util.XFARectangle.Clone">
+            
+             @return
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.util.XFAUtil.ParseFloat(System.String)">
+             Parses an int from either a floating point or integer String.
+            
+             @param s the String to parse
+             @return the parsed int or null if the s was null
+             @throws NumberFormatException if an int could not be parsed
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.util.XFAUtil.ReverseX(System.Single,System.Nullable{System.Single})">
+            @param originX
+            @param x
+            @return
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.util.XFAUtil.ReverseY(System.Single,System.Nullable{System.Single},System.Nullable{System.Single})">
+            @param originY
+            @param y
+            @param heigth
+            @return
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.util.XFAUtil.SetMinAsDefault(iTextSharp.tool.xml.xtra.xfa.util.XFARectangle)">
+             Sets the minH as height if height == null and sets the minW as width if width == null.
+            
+             @param contentArea
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.util.XFAUtil.CheckSomExpression(System.String)">
+            @param refValue
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.util.XFAUtil.ParseNumArray(System.String)">
+             Parses string that represents array of numbers (e.g. "100.4pt 20.11px 58in").
+            
+             @param source source representation of array.
+             @return array of numbers.
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.util.XFAUtil.ParseXfaColor(System.String)">
+             Parses XFA color to {@code BaseColor}. Currently only RGB colors are supported following XFA spec 3.1.
+            
+             @param xfaColor source XFA color.
+             @return parsed color.
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.tags.RichTextSpan.FindEmbedAttributeValue(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            Convenience method to find an value of an embed attribute (embed, embedType or embedMode) independent of the given namespace (e.g. xfa) of "http://www.xfa.org/schema/xfa-data/1.0/".
+            @param nameAttribute
+            @param attributes
+            @return
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.tags.XFATemplateTag.#ctor(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.String)">
+            @param tag
+            @param attr
+            @param ns
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.tags.XFATemplateTag.#ctor(System.String)">
+            @param tag
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.tags.XFATemplateTag.AddContent(System.String)">
+            
+             @param content
+        </member>
+    <member name="P:iTextSharp.tool.xml.xtra.xfa.tags.XFATemplateTag.Content">
+            
+             @return the content
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.resolver.FlattenerContext.GetVoidPdfWriter">
+            Gets a {@link PdfWriter} dummy instance that can be used to write content into it but the content eventually
+            gets discarded
+        </member>
+    <member name="F:iTextSharp.tool.xml.xtra.xfa.resolver.FormatResolver.CANONICAL_DATE_PATTERNS">
+            XFA dates must be expressed in any of the following forms:
+            YYYY[MM[DD]]
+            YYYY[-MM[-DD]]
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.positioner.Positioner.FetchDataTagRecursively">
+            This method gets the dataNode, creating the missing nodes in the path on demand.
+            
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.positioner.SubFormPositioner.AdjustContentArea">
+             Adjusts the width and the height of the {@link XFARectangle} contentArea based on the largest urx and lowest lly of the internal boxes (draws, fields, etc).
+            
+             @return
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.positioner.SubFormPositioner.GetLowestLly" />
+    <member name="T:iTextSharp.tool.xml.xtra.xfa.positioner.TableLayoutManager">
+            Handles table layout routine.
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.positioner.TableLayoutManager.#ctor(iTextSharp.tool.xml.xtra.xfa.positioner.Positioner)">
+            @param tag reference table element.
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.pipe.DataPipeline.Open(iTextSharp.tool.xml.IWorkerContext,iTextSharp.tool.xml.Tag,iTextSharp.tool.xml.ProcessObject)">
+             (non-Javadoc)
+            
+             @see
+             com.itextpdf.tool.xml.pipeline.AbstractPipeline#open(com.itextpdf.tool
+             .xml.WorkerContext, com.itextpdf.tool.xml.Tag,
+             com.itextpdf.tool.xml.ProcessObject)
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.pipe.FormBuilder.GetDataList(iTextSharp.tool.xml.xtra.xfa.tags.XFATemplateTag,iTextSharp.tool.xml.xtra.xfa.tags.DataTag,System.Collections.Generic.IList{iTextSharp.tool.xml.Tag},System.Boolean)">
+            
+             @param templateTag
+             @param dataTag
+             @param returnDataList
+             @return <code>true</code> if the method "advices" continue binding.
+        </member>
+    <member name="T:iTextSharp.tool.xml.xtra.xfa.pipe.LocalContextElementHandlerPipeline">
+            This Pipeline stores the received {@link Element}s in a List in the thread based context.
+            On a call to {@link LocalContextElementHandlerPipeline#init(WorkerContext)} the list is replaced with a new List.
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.pipe.LocalContextElementHandlerPipeline.#ctor(iTextSharp.tool.xml.IPipeline)">
+            @param next
+        </member>
+    <member name="T:iTextSharp.tool.xml.xtra.xfa.pipe.TemplateBuilderPipeline">
+            Builds the template DOM structure and set ContentArea for root and other tags with positional attributes.
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.pipe.TemplateBuilderPipeline.#ctor(iTextSharp.tool.xml.html.CssAppliers)">
+             Instantiate the TemplateBuilderPipeline.
+            
+        </member>
+    <member name="T:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener">
+      <summary>
+            This class provides an empty implementation of <see cref="T:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener" />,
+            which can be extended to create a listener which only needs to handle a subset
+            of the available methods.
+            </summary>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterCompilationUnit(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.CompilationUnitContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.compilationUnit" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitCompilationUnit(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.CompilationUnitContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.compilationUnit" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterVariableAssign(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableAssignContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableAssign" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitVariableAssign(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableAssignContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableAssign" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterVariableDeclarator(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableDeclaratorContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableDeclarator" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitVariableDeclarator(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableDeclaratorContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableDeclarator" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterVariableDeclaratorId(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableDeclaratorIdContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableDeclaratorId" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitVariableDeclaratorId(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableDeclaratorIdContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableDeclaratorId" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterVariableInitializer(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableInitializerContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableInitializer" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitVariableInitializer(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableInitializerContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableInitializer" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterArrayInitializer(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ArrayInitializerContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.arrayInitializer" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitArrayInitializer(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ArrayInitializerContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.arrayInitializer" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterType(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.TypeContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.type" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitType(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.TypeContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.type" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterPrimitiveType(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.PrimitiveTypeContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.primitiveType" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitPrimitiveType(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.PrimitiveTypeContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.primitiveType" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterVariableModifier(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableModifierContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableModifier" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitVariableModifier(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableModifierContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableModifier" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterQualifiedNameList(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.QualifiedNameListContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.qualifiedNameList" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitQualifiedNameList(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.QualifiedNameListContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.qualifiedNameList" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterMethodBody(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.MethodBodyContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.methodBody" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitMethodBody(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.MethodBodyContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.methodBody" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterQualifiedName(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.QualifiedNameContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.qualifiedName" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitQualifiedName(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.QualifiedNameContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.qualifiedName" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterLiteral(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.LiteralContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.literal" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitLiteral(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.LiteralContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.literal" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterIntegerLiteral(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.IntegerLiteralContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.integerLiteral" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitIntegerLiteral(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.IntegerLiteralContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.integerLiteral" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterBooleanLiteral(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.BooleanLiteralContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.booleanLiteral" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitBooleanLiteral(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.BooleanLiteralContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.booleanLiteral" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterBlock(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.BlockContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.block" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitBlock(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.BlockContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.block" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterBlockStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.BlockStatementContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.blockStatement" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitBlockStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.BlockStatementContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.blockStatement" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterIfStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.IfStatementContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ifStatement" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitIfStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.IfStatementContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ifStatement" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterThenStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ThenStatementContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.thenStatement" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitThenStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ThenStatementContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.thenStatement" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterElseIfStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ElseIfStatementContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.elseIfStatement" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitElseIfStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ElseIfStatementContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.elseIfStatement" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterElseStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ElseStatementContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.elseStatement" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitElseStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ElseStatementContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.elseStatement" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterForUpToStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ForUpToStatementContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.forUpToStatement" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitForUpToStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ForUpToStatementContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.forUpToStatement" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterForDownToStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ForDownToStatementContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.forDownToStatement" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitForDownToStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ForDownToStatementContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.forDownToStatement" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterWhileStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.WhileStatementContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.whileStatement" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitWhileStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.WhileStatementContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.whileStatement" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.StatementContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.statement" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.StatementContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.statement" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterParExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ParExpressionContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.parExpression" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitParExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ParExpressionContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.parExpression" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterExpressionList(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ExpressionListContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.expressionList" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitExpressionList(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ExpressionListContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.expressionList" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterStatementExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.StatementExpressionContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.statementExpression" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitStatementExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.StatementExpressionContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.statementExpression" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterAccessor(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.AccessorContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.accessor" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitAccessor(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.AccessorContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.accessor" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterFuncCallExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.FuncCallExpressionContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.funcCallExpression" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitFuncCallExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.FuncCallExpressionContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.funcCallExpression" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterWildcardExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.WildcardExpressionContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.wildcardExpression" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitWildcardExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.WildcardExpressionContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.wildcardExpression" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterAssign(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.AssignContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.assign" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitAssign(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.AssignContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.assign" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterNullEqualityExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.NullEqualityExpressionContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.nullEqualityExpression" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitNullEqualityExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.NullEqualityExpressionContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.nullEqualityExpression" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ExpressionContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.expression" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ExpressionContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.expression" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterPrimary(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.PrimaryContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.primary" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitPrimary(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.PrimaryContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.primary" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterOrOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.OrOperatorsContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.orOperators" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitOrOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.OrOperatorsContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.orOperators" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterAndOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.AndOperatorsContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.andOperators" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitAndOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.AndOperatorsContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.andOperators" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterEqualityOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.EqualityOperatorsContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.equalityOperators" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitEqualityOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.EqualityOperatorsContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.equalityOperators" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterRelationalOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.RelationalOperatorsContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.relationalOperators" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitRelationalOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.RelationalOperatorsContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.relationalOperators" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterNumericOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.NumericOperatorsContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.numericOperators" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitNumericOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.NumericOperatorsContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.numericOperators" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterArguments(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ArgumentsContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.arguments" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitArguments(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ArgumentsContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.arguments" />.
+            <para>The default implementation does nothing.</para></summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.EnterEveryRule(Antlr4.Runtime.ParserRuleContext)">
+      <inheritdoc />
+      <remarks>The default implementation does nothing.</remarks>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.ExitEveryRule(Antlr4.Runtime.ParserRuleContext)">
+      <inheritdoc />
+      <remarks>The default implementation does nothing.</remarks>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)">
+      <inheritdoc />
+      <remarks>The default implementation does nothing.</remarks>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseListener.VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)">
+      <inheritdoc />
+      <remarks>The default implementation does nothing.</remarks>
+    </member>
+    <member name="T:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1">
+      <summary>
+            This class provides an empty implementation of <see cref="T:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1" />,
+            which can be extended to create a visitor which only needs to handle a subset
+            of the available methods.
+            </summary>
+      <typeparam name="Result">The return type of the visit operation.</typeparam>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitCompilationUnit(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.CompilationUnitContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.compilationUnit" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitVariableAssign(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableAssignContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableAssign" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitVariableDeclarator(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableDeclaratorContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableDeclarator" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitVariableDeclaratorId(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableDeclaratorIdContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableDeclaratorId" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitVariableInitializer(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableInitializerContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableInitializer" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitArrayInitializer(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ArrayInitializerContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.arrayInitializer" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitType(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.TypeContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.type" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitPrimitiveType(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.PrimitiveTypeContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.primitiveType" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitVariableModifier(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableModifierContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableModifier" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitQualifiedNameList(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.QualifiedNameListContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.qualifiedNameList" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitMethodBody(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.MethodBodyContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.methodBody" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitQualifiedName(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.QualifiedNameContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.qualifiedName" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitLiteral(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.LiteralContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.literal" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitIntegerLiteral(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.IntegerLiteralContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.integerLiteral" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitBooleanLiteral(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.BooleanLiteralContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.booleanLiteral" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitBlock(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.BlockContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.block" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitBlockStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.BlockStatementContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.blockStatement" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitIfStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.IfStatementContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ifStatement" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitThenStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ThenStatementContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.thenStatement" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitElseIfStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ElseIfStatementContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.elseIfStatement" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitElseStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ElseStatementContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.elseStatement" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitForUpToStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ForUpToStatementContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.forUpToStatement" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitForDownToStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ForDownToStatementContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.forDownToStatement" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitWhileStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.WhileStatementContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.whileStatement" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.StatementContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.statement" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitParExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ParExpressionContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.parExpression" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitExpressionList(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ExpressionListContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.expressionList" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitStatementExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.StatementExpressionContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.statementExpression" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitAccessor(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.AccessorContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.accessor" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitFuncCallExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.FuncCallExpressionContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.funcCallExpression" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitWildcardExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.WildcardExpressionContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.wildcardExpression" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitAssign(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.AssignContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.assign" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitNullEqualityExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.NullEqualityExpressionContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.nullEqualityExpression" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ExpressionContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.expression" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitPrimary(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.PrimaryContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.primary" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitOrOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.OrOperatorsContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.orOperators" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitAndOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.AndOperatorsContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.andOperators" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitEqualityOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.EqualityOperatorsContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.equalityOperators" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitRelationalOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.RelationalOperatorsContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.relationalOperators" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitNumericOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.NumericOperatorsContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.numericOperators" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcBaseVisitor`1.VisitArguments(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ArgumentsContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.arguments" />.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" />
+            on <paramref name="context" />.
+            </para></summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="T:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener">
+      <summary>
+            This interface defines a complete listener for a parse tree produced by
+            <see cref="T:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser" />.
+            </summary>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterCompilationUnit(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.CompilationUnitContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.compilationUnit" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitCompilationUnit(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.CompilationUnitContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.compilationUnit" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterVariableAssign(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableAssignContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableAssign" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitVariableAssign(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableAssignContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableAssign" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterVariableDeclarator(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableDeclaratorContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableDeclarator" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitVariableDeclarator(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableDeclaratorContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableDeclarator" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterVariableDeclaratorId(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableDeclaratorIdContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableDeclaratorId" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitVariableDeclaratorId(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableDeclaratorIdContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableDeclaratorId" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterVariableInitializer(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableInitializerContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableInitializer" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitVariableInitializer(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableInitializerContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableInitializer" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterArrayInitializer(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ArrayInitializerContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.arrayInitializer" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitArrayInitializer(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ArrayInitializerContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.arrayInitializer" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterType(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.TypeContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.type" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitType(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.TypeContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.type" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterPrimitiveType(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.PrimitiveTypeContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.primitiveType" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitPrimitiveType(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.PrimitiveTypeContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.primitiveType" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterVariableModifier(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableModifierContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableModifier" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitVariableModifier(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableModifierContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableModifier" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterQualifiedNameList(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.QualifiedNameListContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.qualifiedNameList" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitQualifiedNameList(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.QualifiedNameListContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.qualifiedNameList" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterMethodBody(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.MethodBodyContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.methodBody" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitMethodBody(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.MethodBodyContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.methodBody" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterQualifiedName(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.QualifiedNameContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.qualifiedName" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitQualifiedName(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.QualifiedNameContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.qualifiedName" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterLiteral(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.LiteralContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.literal" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitLiteral(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.LiteralContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.literal" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterIntegerLiteral(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.IntegerLiteralContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.integerLiteral" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitIntegerLiteral(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.IntegerLiteralContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.integerLiteral" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterBooleanLiteral(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.BooleanLiteralContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.booleanLiteral" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitBooleanLiteral(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.BooleanLiteralContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.booleanLiteral" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterBlock(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.BlockContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.block" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitBlock(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.BlockContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.block" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterBlockStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.BlockStatementContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.blockStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitBlockStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.BlockStatementContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.blockStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterIfStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.IfStatementContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ifStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitIfStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.IfStatementContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ifStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterThenStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ThenStatementContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.thenStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitThenStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ThenStatementContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.thenStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterElseIfStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ElseIfStatementContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.elseIfStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitElseIfStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ElseIfStatementContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.elseIfStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterElseStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ElseStatementContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.elseStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitElseStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ElseStatementContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.elseStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterForUpToStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ForUpToStatementContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.forUpToStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitForUpToStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ForUpToStatementContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.forUpToStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterForDownToStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ForDownToStatementContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.forDownToStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitForDownToStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ForDownToStatementContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.forDownToStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterWhileStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.WhileStatementContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.whileStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitWhileStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.WhileStatementContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.whileStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.StatementContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.statement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.StatementContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.statement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterParExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ParExpressionContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.parExpression" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitParExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ParExpressionContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.parExpression" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterExpressionList(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ExpressionListContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.expressionList" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitExpressionList(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ExpressionListContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.expressionList" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterStatementExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.StatementExpressionContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.statementExpression" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitStatementExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.StatementExpressionContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.statementExpression" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterAccessor(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.AccessorContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.accessor" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitAccessor(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.AccessorContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.accessor" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterFuncCallExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.FuncCallExpressionContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.funcCallExpression" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitFuncCallExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.FuncCallExpressionContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.funcCallExpression" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterWildcardExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.WildcardExpressionContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.wildcardExpression" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitWildcardExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.WildcardExpressionContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.wildcardExpression" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterAssign(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.AssignContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.assign" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitAssign(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.AssignContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.assign" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterNullEqualityExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.NullEqualityExpressionContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.nullEqualityExpression" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitNullEqualityExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.NullEqualityExpressionContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.nullEqualityExpression" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ExpressionContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.expression" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ExpressionContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.expression" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterPrimary(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.PrimaryContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.primary" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitPrimary(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.PrimaryContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.primary" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterOrOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.OrOperatorsContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.orOperators" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitOrOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.OrOperatorsContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.orOperators" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterAndOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.AndOperatorsContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.andOperators" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitAndOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.AndOperatorsContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.andOperators" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterEqualityOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.EqualityOperatorsContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.equalityOperators" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitEqualityOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.EqualityOperatorsContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.equalityOperators" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterRelationalOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.RelationalOperatorsContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.relationalOperators" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitRelationalOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.RelationalOperatorsContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.relationalOperators" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterNumericOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.NumericOperatorsContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.numericOperators" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitNumericOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.NumericOperatorsContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.numericOperators" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.EnterArguments(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ArgumentsContext)">
+      <summary>
+            Enter a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.arguments" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcListener.ExitArguments(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ArgumentsContext)">
+      <summary>
+            Exit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.arguments" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+    </member>
+    <member name="T:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1">
+      <summary>
+            This interface defines a complete generic visitor for a parse tree produced
+            by <see cref="T:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser" />.
+            </summary>
+      <typeparam name="Result">The return type of the visit operation.</typeparam>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitCompilationUnit(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.CompilationUnitContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.compilationUnit" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitVariableAssign(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableAssignContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableAssign" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitVariableDeclarator(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableDeclaratorContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableDeclarator" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitVariableDeclaratorId(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableDeclaratorIdContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableDeclaratorId" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitVariableInitializer(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableInitializerContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableInitializer" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitArrayInitializer(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ArrayInitializerContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.arrayInitializer" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitType(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.TypeContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.type" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitPrimitiveType(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.PrimitiveTypeContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.primitiveType" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitVariableModifier(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.VariableModifierContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.variableModifier" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitQualifiedNameList(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.QualifiedNameListContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.qualifiedNameList" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitMethodBody(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.MethodBodyContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.methodBody" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitQualifiedName(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.QualifiedNameContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.qualifiedName" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitLiteral(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.LiteralContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.literal" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitIntegerLiteral(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.IntegerLiteralContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.integerLiteral" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitBooleanLiteral(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.BooleanLiteralContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.booleanLiteral" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitBlock(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.BlockContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.block" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitBlockStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.BlockStatementContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.blockStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitIfStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.IfStatementContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ifStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitThenStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ThenStatementContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.thenStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitElseIfStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ElseIfStatementContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.elseIfStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitElseStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ElseStatementContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.elseStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitForUpToStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ForUpToStatementContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.forUpToStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitForDownToStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ForDownToStatementContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.forDownToStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitWhileStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.WhileStatementContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.whileStatement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitStatement(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.StatementContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.statement" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitParExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ParExpressionContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.parExpression" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitExpressionList(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ExpressionListContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.expressionList" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitStatementExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.StatementExpressionContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.statementExpression" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitAccessor(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.AccessorContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.accessor" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitFuncCallExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.FuncCallExpressionContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.funcCallExpression" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitWildcardExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.WildcardExpressionContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.wildcardExpression" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitAssign(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.AssignContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.assign" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitNullEqualityExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.NullEqualityExpressionContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.nullEqualityExpression" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitExpression(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ExpressionContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.expression" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitPrimary(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.PrimaryContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.primary" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitOrOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.OrOperatorsContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.orOperators" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitAndOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.AndOperatorsContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.andOperators" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitEqualityOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.EqualityOperatorsContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.equalityOperators" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitRelationalOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.RelationalOperatorsContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.relationalOperators" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitNumericOperators(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.NumericOperatorsContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.numericOperators" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.formcalc.IFormCalcVisitor`1.VisitArguments(iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.ArgumentsContext)">
+      <summary>
+            Visit a parse tree produced by <see cref="M:iTextSharp.tool.xml.xtra.xfa.formcalc.FormCalcParser.arguments" />.
+            </summary>
+      <param name="context">The parse tree.</param>
+      <return>The visitor result.</return>
+    </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.format.FormattingElement.#ctor(System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single})">
+            
+             @param x1, for a line; startX, for a rectangle; llx
+             @param y1, for a line; startY, for a rectangle; lly
+             @param x2, for a line; endX, for a rectangle; urx
+             @param y2, for a line; endY, for a rectangle; ury
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.font.NoAcroFormFound.#ctor" />
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.font.NoAcroFormFound.#ctor(System.String,System.Exception)">
+            @param message
+            @param cause
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.font.NoAcroFormFound.#ctor(System.String)">
+            @param message
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.font.NoAcroFormFound.#ctor(System.Exception)">
+            @param cause
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.font.XFAFont.Difference(iTextSharp.text.Font)">
+             Replaces the attributes that are equal to <VAR>null</VAR> with the
+             attributes of a given font.
+            
+             @param font the font of a lower element class (ex. this - paragraph font, font - chunk font)
+             @return a <CODE>Font</CODE></member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.font.XFAFontProvider.GetStyleString(System.Nullable{System.Int32})">
+             Converts the Integer style to a String which could be a part of BaseFont family font name.
+             Also converts the Integer style to Font.Normal, to avoid having double styles being applied.
+            
+             @param style Integer. Either Font.BOLD, Font.ITALIC or Font.BOLDITALIC is converted.
+             @return styleName which could be a part of BaseFont family font name.
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.element.ArcDrawer.#ctor(iTextSharp.tool.xml.xtra.xfa.tags.IFormNode)">
+            
+             @param arc Arc tag
+        </member>
+    <member name="T:iTextSharp.tool.xml.xtra.xfa.element.BarcodeElement" />
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.element.BorderDrawer.DrawEmbossed(iTextSharp.text.pdf.PdfContentByte,iTextSharp.tool.xml.xtra.xfa.util.XFARectangle,iTextSharp.text.BaseColor,iTextSharp.text.BaseColor,iTextSharp.text.BaseColor,iTextSharp.text.BaseColor)">
+            Draw embossed, etched, lowered and raised borders
+            @param canvas @see PdfContentByte
+            @param borderArea @see XFARectangle
+            @param color1 First color from top left corner
+            @param color2 Second color from top left corner
+            @param color3 Third color from top left corner
+            @param color4 Color of bottom right corner
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.element.BorderDrawer.HasEmbossedStyle">
+            @See border styles in XFA
+            @return true is border style is embossed or etched or lowered or raised
+        </member>
+    <member name="T:iTextSharp.tool.xml.xtra.xfa.element.ImageEditElement" />
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.element.TextDrawer.GetMaxSingleLineText(System.String,iTextSharp.tool.xml.xtra.xfa.util.XFARectangle,iTextSharp.tool.xml.xtra.xfa.js.JsNode,iTextSharp.text.Rectangle,iTextSharp.tool.xml.xtra.xfa.resolver.FlattenerContext)">
+            Returns the maximal substring of the original text, starting from the first character, that fits into
+            single line of the passed area.
+        </member>
+    <member name="M:iTextSharp.tool.xml.xtra.xfa.bind.EmbeddedElement.#ctor(System.String)">
+            @param embedValue
+        </member>
+    <member name="T:iTextSharp.tool.xml.actions.PdfXfaProductData">
+            Stores an instance of <see cref="T:iText.Commons.Actions.Data.ProductData" /> related to iText pdfXfa module.
+        </member>
+    <member name="M:iTextSharp.tool.xml.actions.PdfXfaProductData.GetInstance">
+            Getter for an instance of {@link ProductData} related to iText pdfXfa module.
+            @return iText pdfXfa product description
+        </member>
+    <member name="T:iTextSharp.tool.xml.actions.PdfXfaProductEvent">
+            Class represents events registered in iText pdfXFA module.
+        </member>
+    <member name="F:iTextSharp.tool.xml.actions.PdfXfaProductEvent.FLATTEN_XFA">
+            Flatten xfa event type.
+        </member>
+    <member name="M:iTextSharp.tool.xml.actions.PdfXfaProductEvent.#ctor(iText.Commons.Actions.Sequence.SequenceId,iText.Commons.Actions.Contexts.IMetaInfo,System.String)">
+            Creates an event associated with a general identifier and additional meta data.
+            <param name="sequenceId">is an identifier associated with the event</param><param name="metaInfo">is an additional meta info</param><param name="eventType">is a string description of the event</param></member>
+    <member name="M:iTextSharp.tool.xml.actions.PdfXfaProductEvent.CreateFlattenXfaEvent(iText.Commons.Actions.Sequence.SequenceId,iText.Commons.Actions.Contexts.IMetaInfo)">
+             Creates a flatten-xfa event which is associated with a general identifier and additional meta data.
+            <param name="sequenceId">is an identifier associated with the event</param><param name="metaInfo">is an additional meta info</param><returns>the flatten-xfa event</returns></member>
+  </members>
+</doc>
